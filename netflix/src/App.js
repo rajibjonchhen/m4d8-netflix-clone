@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/Navbar";
@@ -6,20 +6,22 @@ import MyFooter from "./components/MyFooter";
 import TvShows from './components/TvShows'
 import Section from './components/Section'
 
-class App extends Component {
-  state = {
-    searchResult: [],
-    search: ""
-  }
-  showSearchResult = async (searchQuery) => {
+const App =()=> {
+  
+
+  const [search, setSearch] = useState('')
+  const [searchResult, setSearchResult] = useState([])
+
+
+  const showSearchResult = async (searchQuery) => {
     this.setState({ search: searchQuery })
     try {
         let response = await fetch("http://www.omdbapi.com/?apikey=82ebb69a&s=" + searchQuery, {
             method: "GET"
         })
         let data = await response.json()
-        this.setState({searchResult:data})
-        this.setState({search:searchQuery})
+        setSearchResult({data})
+        setSearch({searchQuery})
         console.log(data)
       
 
@@ -28,39 +30,24 @@ class App extends Component {
     }
   }
 
-  render() {
+  
     return (
       <div className="App">
         
-      <NavBar showSearchResult ={this.showSearchResult}/>
-      <TvShows />
-
-        
-      {this.state.search && (
-        <>
-            <Section
-              heading="Search Results" title={this.state.search} />
-            </>
-      ) }
-
-            {!this.state.search &&
-             
-              (<>
+      <NavBar showSearchResult ={showSearchResult}/>
+      <home/>
+      <TvShows /> 
+      {search? ( <Section heading="Search Results" title={search} />) : (<>
                 <Section heading="Harry Potter" title="Harry Potter"/>
                 <Section heading="Marvel" title="Marvel"/>
                 <Section heading="Lord of the Rings" title="Lord of the Rings"/>
                 <Section heading="Horror" title="Horror"/>
               </>)}
-                <MyFooter />
-                
-                
-      
-              
-  
+      <MyFooter />
       </div>
     );
 
-  }
+  
 }
 
 export default App;
