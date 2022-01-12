@@ -31,10 +31,10 @@ const App =()=> {
   
     return (
       <BrowserRouter>
-      <div className="App">
-        <Routes>
         <MyLayout showSearchResult={showSearchResult}>
         </MyLayout>
+      <div className="App">
+        <Routes>
             <Route path='/' element={<Home search={search}/>}/>
         </Routes>
       </div>
