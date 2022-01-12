@@ -6,6 +6,7 @@ import MyFooter from "./components/MyFooter";
 import TvShows from './components/TvShows'
 import Section from './components/Section'
 import Home from './components/Home';
+import MyLayout from './components/MyLayout';
 const App =()=> {
   
 
@@ -33,11 +34,12 @@ const App =()=> {
   
     return (
       <div className="App">
-        
-      <NavBar showSearchResult ={showSearchResult}/>
-      <Home search={search}/>
+        <MyLayout showSearchResult={showSearchResult}>
+            <Home search={search}/>
+        </MyLayout>
+      
    
-      <MyFooter />
+      
       </div>
     );
 

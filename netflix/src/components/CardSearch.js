@@ -24,13 +24,7 @@ export default class CardSearch extends Component {
 
         })
     }
-    // onDoubleClickF = () => {
-    //     this.setState({
-    //         btnColor: 'primary',
-    //         cardClass: "px-1 py-4 m-0 border-0 w-100 bg-transparent",
-    //         padding: "0px"
-    //     })
-    // }
+
     setShowComments = (show) =>{
         this.setState({showComments:show})
     }
