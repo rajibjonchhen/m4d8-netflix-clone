@@ -5,6 +5,11 @@ import Home from './components/Home';
 import MyLayout from './components/MyLayout';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import MovieDetail from './components/MovieDetail';
+import TvShowPage from './components/TvShowPage';
+import MoviesPage from './components/MoviesPage'
+import RecentlyAddedPage from './components/RecentlyAddedPage';
+import MyList from './components/MyList';
+import ErrorPage from './components/ErrorPage'
 const App =()=> {
 
   const [search, setSearch] = useState('')
@@ -37,14 +42,30 @@ const App =()=> {
         <Route path='/' element={<MyLayout showSearchResult={showSearchResult}>
             <Home search={search}/>
         </MyLayout>}/>
-        </Routes>
+       
+          <Route path='/TvShow' element={<MyLayout>
+            <TvShowPage/>
+          </MyLayout>}/>
 
-        <Routes>
           <Route path='/MovieDetail/:MovieId' element={<MyLayout>
             <MovieDetail/>
           </MyLayout>}/>
-        </Routes>
+        
+         
+        <Route path='/Movies' element={<MyLayout>
+            <MoviesPage/>
+          </MyLayout>}/>
 
+          <Route path='/Recent' element={<MyLayout>
+            <RecentlyAddedPage/>
+          </MyLayout>}/>
+
+          <Route path='/MyList' element={<MyLayout>
+            <MyList/>
+          </MyLayout>}/>
+
+          <Route path='/*' element={<ErrorPage/>}/>
+        </Routes>   
       </div>
       </BrowserRouter>
     );

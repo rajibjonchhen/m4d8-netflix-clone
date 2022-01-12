@@ -36,10 +36,10 @@ const[ display,setDisplay]=useState(false)
                             <Link to='/movies'>
                             <div className="nav-link font-weight-bold"> Movies </div>
                             </Link>
-                            <Link to='Recent'>
+                            <Link to='/Recent'>
                             <div className="nav-link font-weight-bold">Recently Added</div>
                             </Link>
-                            <Link to='MyList'>
+                            <Link to='/MyList'>
                             <div className="nav-link font-weight-bold">My List</div>
                             </Link>
                         </Nav>
