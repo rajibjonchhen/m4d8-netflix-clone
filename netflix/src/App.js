@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from './components/Home';
 import MyLayout from './components/MyLayout';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-
+import MovieDetail from './components/MovieDetail';
 const App =()=> {
 
   const [search, setSearch] = useState('')
@@ -31,12 +31,20 @@ const App =()=> {
   
     return (
       <BrowserRouter>
-        <MyLayout showSearchResult={showSearchResult}>
-        </MyLayout>
       <div className="App">
+        
         <Routes>
-            <Route path='/' element={<Home search={search}/>}/>
+        <Route path='/' element={<MyLayout showSearchResult={showSearchResult}>
+            <Home search={search}/>
+        </MyLayout>}/>
         </Routes>
+
+        <Routes>
+          <Route path='/MovieDetail/:MovieId' element={<MyLayout>
+            <MovieDetail/>
+          </MyLayout>}/>
+        </Routes>
+
       </div>
       </BrowserRouter>
     );

@@ -2,12 +2,12 @@ import NavBar from "./Navbar";
 import MyFooter from "./MyFooter";
 
 
-const MyLayout = ({showSearchResult})=>{
+const MyLayout = (props)=>{
 
     return(
         <>
-       <NavBar showSearchResult ={showSearchResult}/>
-        [props.children]
+       <NavBar showSearchResult ={props.showSearchResult}/>
+        {props.children}
        <MyFooter />
         </>
     )
