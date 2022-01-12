@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import NavBar from "./components/Navbar";
-import MyFooter from "./components/MyFooter";
-import TvShows from './components/TvShows'
-import Section from './components/Section'
 import Home from './components/Home';
 import MyLayout from './components/MyLayout';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+
 const App =()=> {
-  
 
   const [search, setSearch] = useState('')
   const [searchResult, setSearchResult] = useState([])
@@ -33,14 +30,15 @@ const App =()=> {
 
   
     return (
+      <BrowserRouter>
       <div className="App">
+        <Routes>
         <MyLayout showSearchResult={showSearchResult}>
-            <Home search={search}/>
         </MyLayout>
-      
-   
-      
+            <Route path='/' element={<Home search={search}/>}/>
+        </Routes>
       </div>
+      </BrowserRouter>
     );
 
   
